@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sushi_man_app/pages/intro_page.dart';
+import 'package:sushi_man_app/pages/menu_page.dart';
 
 void main() {
   runApp(const SushiMapApp());
@@ -10,9 +11,13 @@ class SushiMapApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: IntroPage(),
+      home: const IntroPage(),
+      routes: {
+        '/intropage':(context) => const IntroPage(),
+        '/menupage':(context) => const MenuPage(),
+      }
     );
   }
 }

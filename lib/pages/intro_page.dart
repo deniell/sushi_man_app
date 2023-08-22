@@ -8,11 +8,12 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 138, 60, 55),
+      backgroundColor: const Color.fromARGB(255, 138, 60, 55),
       body: Padding(
         padding: const EdgeInsets.all(25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const SizedBox(height: 25,),
             // shop name
@@ -24,15 +25,15 @@ class IntroPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 20,),
+            const SizedBox(height: 25,),
 
             // icon
             Padding(
-              padding: const EdgeInsets.all(50),
+              padding: const EdgeInsets.fromLTRB(50, 25, 50, 25),
               child: Image.asset('assets/images/salmon_eggs.png'),
             ),
 
-            const SizedBox(height: 20,),
+            const SizedBox(height: 25,),
 
             // title
             Text(
@@ -54,11 +55,16 @@ class IntroPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 20,),
+            const SizedBox(height: 25,),
 
             // get start button
-            const Button(text: 'Get Started'),
-
+            Button(
+              text: 'Get Started',
+              onTap: () {
+                // go to menu page
+                Navigator.pushNamed(context, '/menupage');
+              },
+            ),
           ],
         ),
       ),
