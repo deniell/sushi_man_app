@@ -6,7 +6,7 @@ Based on youtube tutorial: https://www.youtube.com/watch?v=hksq23WGVW8
 Target platform - Android.
 
 ## Motivation
-Create shop application.
+Create a shop application.
 
 #### Driven by
 Flutter 3.7.0-stable

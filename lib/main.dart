@@ -14,6 +14,9 @@ class SushiMapApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const IntroPage(),
+      theme: ThemeData(
+        primaryColor: const Color.fromARGB(255, 138, 60, 55)
+      ),
       routes: {
         '/intropage':(context) => const IntroPage(),
         '/menupage':(context) => const MenuPage(),
