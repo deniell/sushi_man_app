@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sushi_man_app/components/button.dart';
+import 'package:sushi_man_app/components/food_tile.dart';
+import 'package:sushi_man_app/models/food.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -10,6 +12,25 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  // food menu
+  List foodMenu = [
+    // salmon sushi
+    const Food(
+      name: 'Salmon Sushi',
+      price: '21.00',
+      imagePath: 'assets/images/salmon_sushi.png',
+      rating: '4.9',
+    ),
+
+    // tuna
+    const Food(
+      name: 'Tuna',
+      price: '23.00',
+      imagePath: 'assets/images/tuna.png',
+      rating: '4.3',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,6 +128,16 @@ class _MenuPageState extends State<MenuPage> {
           ),
 
           const SizedBox(height: 10),
+          
+          // menu
+          Expanded(
+            child: ListView.builder(
+              itemCount: foodMenu.length,
+              itemBuilder: (context, index) => FoodTile(
+                food: foodMenu[index],
+              )
+            ),
+          ),
 
           // popular food
         ],
