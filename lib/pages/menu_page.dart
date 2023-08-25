@@ -132,12 +132,15 @@ class _MenuPageState extends State<MenuPage> {
           // menu
           Expanded(
             child: ListView.builder(
+              scrollDirection: Axis.horizontal,
               itemCount: foodMenu.length,
               itemBuilder: (context, index) => FoodTile(
                 food: foodMenu[index],
               )
             ),
           ),
+
+          const SizedBox(height: 25),
 
           // popular food
         ],
