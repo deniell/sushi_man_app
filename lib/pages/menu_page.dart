@@ -24,7 +24,7 @@ class _MenuPageState extends State<MenuPage> {
 
     // tuna
     const Food(
-      name: 'Tuna',
+      name: 'Tuna Sushi',
       price: '23.00',
       imagePath: 'assets/images/tuna.png',
       rating: '4.3',
@@ -34,6 +34,7 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -100,6 +101,8 @@ class _MenuPageState extends State<MenuPage> {
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
               decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.circular(20),
@@ -108,6 +111,7 @@ class _MenuPageState extends State<MenuPage> {
                   borderSide: const BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.circular(20),
                 ),
+                hintText: 'Search here...'
               ),
             ),
           ),
@@ -140,9 +144,60 @@ class _MenuPageState extends State<MenuPage> {
             ),
           ),
 
-          const SizedBox(height: 25),
+          // const SizedBox(height: 25),
 
           // popular food
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: BorderRadius.circular(20)
+            ),
+            margin: const EdgeInsets.all(25),
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    // image
+                    Image.asset(
+                      'assets/images/salmon_eggs.png',
+                      height: 60,
+                    ),
+
+                    const SizedBox(width: 20),
+
+                    // name and price
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // name
+                        Text(
+                          'Salmon Eggs',
+                          style: GoogleFonts.dmSerifDisplay(fontSize: 18),
+                        ),
+
+                        const SizedBox(height: 10),
+
+                        // price
+                        Text(
+                          '\$21.00',
+                          style: TextStyle(color: Colors.grey[700]),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+
+                // heart
+                const Icon(
+                  Icons.favorite_outline,
+                  color: Colors.grey,
+                  size: 28,
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
