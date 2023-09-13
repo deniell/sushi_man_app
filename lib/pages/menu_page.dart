@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sushi_man_app/components/button.dart';
 import 'package:sushi_man_app/components/food_tile.dart';
 import 'package:sushi_man_app/models/food.dart';
+import 'package:sushi_man_app/pages/food_details_page.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   // food menu
-  List foodMenu = [
+  List<Food> foodMenu = [
     // salmon sushi
     const Food(
       name: 'Salmon Sushi',
@@ -140,6 +141,7 @@ class _MenuPageState extends State<MenuPage> {
               itemCount: foodMenu.length,
               itemBuilder: (context, index) => FoodTile(
                 food: foodMenu[index],
+                onTap: () => navigateToFoodDetails(index),
               )
             ),
           ),
@@ -201,5 +203,11 @@ class _MenuPageState extends State<MenuPage> {
         ],
       ),
     );
+  }
+
+  // navigate to food item details page
+  void navigateToFoodDetails(int index) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const FoodDetailsPage(food: foodMenu[index])));
   }
 }
