@@ -34,7 +34,7 @@ class Button extends StatelessWidget {
             const SizedBox(width: 10,),
 
             // icon
-            Icon(
+            const Icon(
               Icons.arrow_forward,
               color: Colors.white,
             )
