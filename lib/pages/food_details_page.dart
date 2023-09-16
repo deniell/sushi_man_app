@@ -69,12 +69,78 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   const SizedBox(height: 25),
 
                   // description
+                  Text(
+                    'Description',
+                    style: TextStyle(
+                      color: Colors.grey[900],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+
+                  const SizedBox(height: 10),
+
+                  Text(
+                    'Delicately sliced, fresh Atlantic salmon drapes elegantly'
+                    ' over a pillow of perfectly seasoned susi rice. Its vibrant'
+                    ' hue and butter texture promises an exquisite melt-in-your-mouth'
+                    ' experience. Paired with a whisper of wasabi and side of '
+                    'traditional pickled ginger, our salmon sushi is an ode to'
+                    ' the purity and simplicity of authentic Japanese flavors.'
+                    ' Indulge in the oceans bounty with each savory bite.',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 14,
+                      height: 2,
+                    )
+                  ),
                 ],
               ),
             ),
           ),
 
           // price + quantity + add to cart button
+          Container(
+            color: Theme.of(context).primaryColor,
+            padding: const EdgeInsets.all(25),
+            child: Column(
+              children: [
+                // price + quantity
+                Row(
+                  children: [
+                    // price
+                    Text(
+                      '\$${widget.food.price}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+
+                    // quantity
+                    Row(
+                      children: [
+                        // minus button
+                        Container(
+                          child: IconButton(
+                            icon: Icons.remove,
+                            onPressed: decrementQuantity,
+                          ),
+                        )
+
+                        // quantity count
+
+                        // plus button
+                      ],
+                    )
+                  ],
+                )
+
+                // add to cart button
+              ],
+            ),
+          )
         ],
       ),
     );
