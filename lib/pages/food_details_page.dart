@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sushi_man_app/components/button.dart';
 import 'package:sushi_man_app/models/food.dart';
 
 class FoodDetailsPage extends StatefulWidget {
@@ -12,6 +13,9 @@ class FoodDetailsPage extends StatefulWidget {
 }
 
 class _FoodDetailsPageState extends State<FoodDetailsPage> {
+  // quantity
+  int quantityCount = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,14 +103,17 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
             ),
           ),
 
+          const SizedBox(height: 10),
+
           // price + quantity + add to cart button
           Container(
             color: Theme.of(context).primaryColor,
-            padding: const EdgeInsets.all(25),
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
             child: Column(
               children: [
                 // price + quantity
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // price
                     Text(
@@ -123,21 +130,57 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                       children: [
                         // minus button
                         Container(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).buttonColor,
+                            shape: BoxShape.circle,
+                          ),
                           child: IconButton(
-                            icon: Icons.remove,
+                            icon: const Icon(
+                              Icons.remove,
+                              color: Colors.white,
+                            ),
                             onPressed: decrementQuantity,
                           ),
-                        )
+                        ),
 
                         // quantity count
+                        SizedBox(
+                          width: 40,
+                          child: Center(
+                            child: Text(
+                              quantityCount.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
 
                         // plus button
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).buttonColor,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                            onPressed: incrementQuantity,
+                          ),
+                        ),
                       ],
                     )
                   ],
-                )
+                ),
+
+                const SizedBox(height: 20),
 
                 // add to cart button
+                Button(text: 'Add to Cart', onTap: addToCart),
               ],
             ),
           )
@@ -145,4 +188,21 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
       ),
     );
   }
+
+  // decrement quantity
+  void decrementQuantity() {
+    setState(() {
+      quantityCount--;
+    });
+  }
+
+  // increment quantity
+  void incrementQuantity() {
+    setState(() {
+      quantityCount++;
+    });
+  }
+
+  // add to cart
+  void addToCart() {}
 }
