@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sushi_man_app/components/button.dart';
 import 'package:sushi_man_app/components/food_tile.dart';
-import 'package:sushi_man_app/models/food.dart';
+import 'package:sushi_man_app/models/shop.dart';
 import 'package:sushi_man_app/pages/food_details_page.dart';
 
 class MenuPage extends StatefulWidget {
@@ -13,25 +13,6 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-  // food menu
-  List<Food> foodMenu = [
-    // salmon sushi
-    const Food(
-      name: 'Salmon Sushi',
-      price: '21.00',
-      imagePath: 'assets/images/salmon_sushi.png',
-      rating: '4.9',
-    ),
-
-    // tuna
-    const Food(
-      name: 'Tuna Sushi',
-      price: '23.00',
-      imagePath: 'assets/images/tuna.png',
-      rating: '4.3',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
