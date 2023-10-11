@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sushi_man_app/components/button.dart';
 import 'package:sushi_man_app/models/food.dart';
+import 'package:sushi_man_app/models/shop.dart';
 
 class FoodDetailsPage extends StatefulWidget {
   final Food food;
@@ -206,5 +208,46 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
   }
 
   // add to cart
-  void addToCart() {}
+  void addToCart() {
+    // only add to the Cart when some food is chosen
+    if (quantityCount > 0) {
+      // get access to shop
+      final shop = context.read<Shop>();
+
+      // add to cart
+      shop.addToCart(widget.food, quantityCount);
+
+      // let user know it was successful
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          backgroundColor: Theme.of(context).primaryColor,
+          content: const Text(
+            'Successfully added to cart',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            // okay button
+            IconButton(
+              onPressed: () {
+                // pop once to remove dialog box
+                Navigator.pop(context);
+
+                // pop again to go previous screen
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.done,
+                color: Colors.white,
+              ),
+            )
+          ],
+        ),
+      );
+    }
+  }
 }
